@@ -1,0 +1,59 @@
+Aca alojaran todos los servicios de
+Se creara un servicio por cada Controller del Backend
+
+
+Ejemplos:
+
+Services / OfferService.dart  ---> OfferController
+
+// No se si flutter usa injeccion de dependencias, pero ideal usarlo de esa forma.
+
+
+<<<NO COPIAR ESTO FUE UN PROYECTO MIO>>>> PUEDE NO ESTAR 100% BIEN. PERO PA QUE SE GUIEN
+
+class PostFireBaseService implements PostRepository {
+  // final PostApi api; TODO: implement Api in the future
+  // ref https://codewithandrea.com/articles/flutter-repository-pattern/
+
+  final FirebaseStorage storage = FirebaseStorage.instance;
+
+  @override
+  Future commentPost(String comment, String postId, String userId) {
+    // TODO: implement commentPost
+    throw UnimplementedError();
+  }
+
+  @override
+  Future getPost() {
+    // TODO: implement getPost
+    throw UnimplementedError();
+  }
+
+  @override
+  Future getPostByLocation(String location) {
+    // TODO: implement getPostByLocation
+    throw UnimplementedError();
+  }
+
+  @override
+  Future likePost(String postId, String userId) {
+    // TODO: implement likePost
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String> uploadPost(File file) async {
+    String postId = Uuid().v4();
+    Reference storageRef = storage.ref().child('');
+    String url = '';
+    UploadTask uploadTask = storageRef.child('post_$postId.jpg').putFile(file);
+    await uploadTask.whenComplete(() {
+      storageRef.getDownloadURL().then((downloadedUrl) {
+        url = downloadedUrl;
+      }).catchError((error) {
+        print('error downloading url: $error');
+      });
+    });
+    return url;
+  }
+}

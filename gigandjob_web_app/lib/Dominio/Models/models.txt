@@ -1,0 +1,35 @@
+Aqui se alojaran los DTO o models, es decir clases plain que implementan Equatable y hacen la traduccion de JSON a clases
+
+
+class Post with ChangeNotifier {
+  String postId;
+  String ownerId;
+  String userEmail;
+  String location;
+  String caption;
+  String mediaUrl;
+  dynamic likes;
+  //dynamic comments;
+
+  Post(
+      {required this.postId,
+      required this.ownerId,
+      required this.userEmail,
+      required this.location,
+      required this.caption,
+      required this.mediaUrl,
+      required this.likes});
+
+  factory Post.fromDocument(DocumentSnapshot doc) {
+    return Post(
+      postId: doc['postId'],
+      ownerId: doc['userId'],
+      userEmail: doc['userEmail'],
+      location: doc['location'],
+      caption: doc['caption'],
+      mediaUrl: doc['mediaUrl'],
+      likes: doc['likes'],
+      // comments: doc[''],
+    );
+  }
+}

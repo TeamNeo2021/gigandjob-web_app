@@ -1,0 +1,2 @@
+Aqui creamos widgets que no pertenezcan a una sola pagina, por ejemplo un BottomNavBar 
+O quizas widgets reusables.

@@ -1,0 +1,5 @@
+Aqui se alojaran todos los archivos referentes a la logica interna de la app, es decir Clases utiles, Modelos, Repostiorios y Servicios
+
+Dominio/ Services: aqui van a ir todos los servicios para las llamadas 
+Dominio / Models: Aqui van todos los DTOs
+Dominio / Repostiories: Interfaces que seran implementadas por los servicios

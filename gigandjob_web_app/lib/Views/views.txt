@@ -1,0 +1,8 @@
+Hola aqui van las vistas!!
+POR CADA PANTALLA CREAR UNA CARPETA EJEMPLO
+USER PROFLE---->>  USER PROFILE / Widgets 
+                    USER PROFILE / BLOC
+                                        /UserProfileBloc.dart
+                                        /UserProfileBlocEvents.dart
+                                        /UserProfileStates.dart
+                    USER PROFILE / UserProfile.dart

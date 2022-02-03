@@ -1,0 +1,14 @@
+
+EJEMPLO:
+
+abstract class PostRepository {
+  Future getPost();
+
+  Future getPostByLocation(String location);
+
+  Future<String> uploadPost(File file);
+
+  Future commentPost(String comment, String postId, String userId);
+
+  Future likePost(String postId, String userId);
+}
