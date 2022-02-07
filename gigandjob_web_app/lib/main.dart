@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gigandjob_web_app/Views/dashboard.dart';
+import 'package:gigandjob_web_app/bloc/dashboard/dashboard_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,15 +13,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Dashboard')),
-        body: const Dashboard(),
-      ),
-    );
+    return MultiBlocProvider(
+        providers: [BlocProvider(create: (_) => DashboardBloc())],
+        child: MaterialApp(
+            title: 'Flutter Demo',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            home: Scaffold(
+              appBar: AppBar(title: const Text('Dashboard')),
+              body: const Dashboard(),
+            )));
   }
 }

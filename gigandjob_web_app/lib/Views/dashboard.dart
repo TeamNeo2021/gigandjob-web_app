@@ -5,11 +5,26 @@ import 'package:gigandjob_web_app/bloc/dashboard/dashboard_bloc.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
-
-  @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-        providers: [BlocProvider(create: (_) => DashboardBloc())],
-        child: const Center(child: DashboardCard(number: 0)));
+    final dashboardBloc = BlocProvider.of<DashboardBloc>(context);
+    return GridView.count(crossAxisCount: 3, children: [
+      Center(child: BlocBuilder<DashboardBloc, DashboardState>(
+        builder: (context, state) {
+          return DashboardCard(
+              label: 'Today`s meetings', number: state.meetings);
+        },
+      )),
+      Center(child: BlocBuilder<DashboardBloc, DashboardState>(
+        builder: (context, state) {
+          return DashboardCard(
+              label: 'Registered employers', number: state.employers);
+        },
+      )),
+      Center(child: BlocBuilder<DashboardBloc, DashboardState>(
+        builder: (context, state) {
+          return DashboardCard(label: 'Registered users', number: state.users);
+        },
+      ))
+    ]);
   }
 }

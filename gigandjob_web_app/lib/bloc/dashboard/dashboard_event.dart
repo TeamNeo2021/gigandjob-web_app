@@ -4,9 +4,7 @@ part of 'dashboard_bloc.dart';
 abstract class DashboardEvent {}
 
 class UpdateMeetings extends DashboardEvent {
-  final int number;
-
-  UpdateMeetings(this.number);
+  UpdateMeetings();
 }
 
 class UpdateUsers extends DashboardEvent {

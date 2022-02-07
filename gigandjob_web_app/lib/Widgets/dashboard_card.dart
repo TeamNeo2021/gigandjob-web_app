@@ -1,52 +1,62 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LineSeparator extends StatelessWidget {
-  const LineSeparator({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return FractionallySizedBox(
-        widthFactor: 0.4,
-        heightFactor: 1,
-        child: Container(
-            height: 2,
-            color: Colors.blue.withOpacity(0.4),
-            margin: const EdgeInsets.symmetric(vertical: 10)));
-  }
-}
-
 class DashboardCard extends StatelessWidget {
   final int number;
+  final String label;
+  double sizemultiplier;
 
-  const DashboardCard({Key? key, required this.number}) : super(key: key);
+  DashboardCard(
+      {Key? key,
+      required this.label,
+      required this.number,
+      this.sizemultiplier = 1})
+      : super(key: key) {
+    if (sizemultiplier < 1) {
+      throw Exception('size multiplier cannot be negative');
+    }
+  }
 
-  @override
   Widget build(BuildContext context) {
     return Card(
       child: SizedBox(
-        height: 100,
-        width: 200,
+        height: 120 * sizemultiplier,
+        width: 200 * sizemultiplier,
         child: Column(
           children: [
             Container(
-              margin: const EdgeInsets.all(6),
-              padding: const EdgeInsets.all(4),
+              margin: EdgeInsets.all(6 * sizemultiplier),
+              padding: EdgeInsets.all(8 * sizemultiplier),
               alignment: Alignment.topLeft,
-              child: const Text('Meetings'),
+              child: Text(label),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                    margin:
-                        const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-                    child: const Icon(Icons.verified)),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-                  child: const Text('13'),
-                )
+                Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Container(
+                        margin: EdgeInsets.symmetric(
+                            vertical: 4 * sizemultiplier,
+                            horizontal: 4 * sizemultiplier),
+                        child: Icon(
+                          Icons.trending_up_rounded,
+                          size: 30 * sizemultiplier,
+                        ))),
+                Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 12 * sizemultiplier),
+                    child: Container(
+                      margin: EdgeInsets.symmetric(
+                          vertical: 4 * sizemultiplier,
+                          horizontal: 4 * sizemultiplier),
+                      child: Text(
+                        number.toString(),
+                        style: TextStyle(fontSize: 80 * sizemultiplier / 2),
+                      ),
+                    ))
               ],
             )
           ],

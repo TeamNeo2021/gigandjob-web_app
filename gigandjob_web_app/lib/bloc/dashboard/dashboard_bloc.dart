@@ -7,7 +7,12 @@ part 'dashboard_state.dart';
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   DashboardBloc() : super(DashboardState()) {
     on<DashboardEvent>((event, emit) {
-      // TODO: implement event handler
+      //I think its better using switch
+      if (event is UpdateMeetings) {
+        //recojo de BD
+        int meetings = 50;
+        emit(DashboardState(meetings: meetings));
+      }
     });
   }
 }
