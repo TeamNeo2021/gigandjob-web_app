@@ -5,6 +5,7 @@ import 'package:gigandjob_web_app/bloc/dashboard/dashboard_bloc.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
+  @override
   Widget build(BuildContext context) {
     final dashboardBloc = BlocProvider.of<DashboardBloc>(context);
     return GridView.count(crossAxisCount: 3, children: [
