@@ -12,18 +12,25 @@ class Dashboard extends StatelessWidget {
       Center(child: BlocBuilder<DashboardBloc, DashboardState>(
         builder: (context, state) {
           return DashboardCard(
-              label: 'Today`s meetings', number: state.meetings);
+              key: const Key('MeetingsCard'),
+              label: 'Today`s meetings',
+              number: state.meetings);
         },
       )),
       Center(child: BlocBuilder<DashboardBloc, DashboardState>(
         builder: (context, state) {
           return DashboardCard(
-              label: 'Registered employers', number: state.employers);
+              key: const Key('EmployersCard'),
+              label: 'Registered employers',
+              number: state.employers);
         },
       )),
       Center(child: BlocBuilder<DashboardBloc, DashboardState>(
         builder: (context, state) {
-          return DashboardCard(label: 'Registered users', number: state.users);
+          return DashboardCard(
+              key: const Key('UsersCard'),
+              label: 'Registered users',
+              number: state.users);
         },
       ))
     ]);
