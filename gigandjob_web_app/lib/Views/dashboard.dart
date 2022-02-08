@@ -32,7 +32,12 @@ class Dashboard extends StatelessWidget {
               label: 'Registered users',
               number: state.users);
         },
-      ))
+      )),
+      OutlinedButton(
+          onPressed: () {
+            dashboardBloc.add(UpdateDashboard());
+          },
+          child: const Text('Refresh'))
     ]);
   }
 }
