@@ -27,6 +27,10 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  responsive: ^0.3.11+11
+  ready: ^0.0.1-dev.6
+
+
   flutter:
     sdk: flutter
   
