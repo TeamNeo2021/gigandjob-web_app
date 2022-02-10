@@ -6,8 +6,8 @@ class Candidate {
   String email;
   String birthDate;
   String password;
-  double latitude;
-  double longitude;
+  String latitude;
+  String longitude;
 
   Candidate(
       {required this.name,
@@ -28,18 +28,16 @@ class Candidate {
         email = "",
         birthDate = "",
         password = "",
-        latitude = 0.0,
-        longitude = 0.0;
+        latitude = "",
+        longitude = "";
 
   Map<String, dynamic> toJson() {
     return {
-      "name": name,
-      "lastname": lastname,
-      "phoneCode": phoneCode,
+      "name": {"firstname": name, "lastnames": lastname},
+      "phone": {"areaCode": phoneCode, "phoneNumber": phoneNumber},
       "email": email,
       "birthdate": birthDate,
-      "latitude": latitude,
-      "longitude": longitude
+      "location": {"latitude": latitude, "longitude": longitude}
     };
   }
 }

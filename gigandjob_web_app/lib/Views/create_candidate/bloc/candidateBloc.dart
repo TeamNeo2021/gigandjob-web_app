@@ -38,11 +38,11 @@ class CandidateCubit extends Cubit<CandidateState> {
     if (state.candidate.password.trim().isEmpty) {
       errors["password"] = "The password date cannot be empty";
     }
-    if (state.candidate.latitude.compareTo(0.0) == true) {
-      errors["latitude"] = "The latitude date cannot be 0.0";
+    if (state.candidate.latitude.trim().isEmpty) {
+      errors["latitude"] = "The latitude cannot be empty";
     }
-    if (state.candidate.longitude.compareTo(0.0) == true) {
-      errors["longitude"] = "The longitude date cannot be 0.0";
+    if (state.candidate.longitude.trim().isEmpty) {
+      errors["longitude"] = "The longitude cannot be empty";
     }
     if (!_emailRegex.hasMatch(state.candidate.email)) {
       errors["mail"] = "The email given is invalid";
