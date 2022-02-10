@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gigandjob_web_app/Views/dashboard.dart';
+import 'package:gigandjob_web_app/Widgets/components/dashboards.dart';
+import 'package:gigandjob_web_app/Widgets/dashboard_screen.dart';
 import 'package:gigandjob_web_app/bloc/dashboard/dashboard_bloc.dart';
 
 void main() {
@@ -18,13 +20,18 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (_) => DashboardBloc()..add(UpdateDashboard()))
         ],
         child: MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-            home: Scaffold(
-              appBar: AppBar(title: const Text('Dashboard')),
-              body: const Dashboard(),
-            )));
+          routes: {
+            "dashboard_screen": (context) =>
+                DashboardScreen(opcion_nav: "home"),
+            "candidate_create": (context) =>
+                DashboardScreen(opcion_nav: "CreateCandidate"),
+          },
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: Scaffold(body: DashboardScreen(opcion_nav: "home")),
+        ));
   }
 }
