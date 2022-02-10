@@ -66,6 +66,7 @@ class CandidateCubit extends Cubit<CandidateState> {
           await repository.save(state.candidate).whenComplete(() {
             emit(state.success());
           }).catchError((err) {
+            print(err);
             emit(state.error(err));
             return "Failure";
           });
