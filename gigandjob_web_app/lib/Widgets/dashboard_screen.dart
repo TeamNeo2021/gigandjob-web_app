@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gigandjob_web_app/Views/dashboard.dart';
 import 'package:gigandjob_web_app/Widgets/components/dashboard_content.dart';
 import 'package:gigandjob_web_app/Widgets/components/dashboards.dart';
-import 'package:responsive/responsive.dart';
-import 'package:ready/ready.dart';
 import 'package:gigandjob_web_app/Widgets/components/drawer_menu.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -17,6 +15,8 @@ class DashboardScreen extends StatelessWidget {
       return dashboards(opcion_nav: "home");
     } else if (opcion_nav == "CreateCandidate") {
       return dashboards(opcion_nav: "CreateCandidate");
+    } else if (opcion_nav == "CreateEmployer") {
+      return dashboards(opcion_nav: "CreateEmployer");
     } else
       return dashboards(opcion_nav: "home");
   }

@@ -29,7 +29,7 @@ environment:
 dependencies:
   responsive: ^0.3.11+11
   ready: ^0.0.1-dev.6
-
+ 
 
   flutter:
     sdk: flutter

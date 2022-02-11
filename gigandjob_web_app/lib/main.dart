@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gigandjob_web_app/Dominio/Services/employer_service.dart';
 import 'package:gigandjob_web_app/Views/create_employer/create_employer_view.dart';
 import 'Dominio/Repositories/employer_repository.dart';
+import 'Views/create_employer/bloc/employer_cubit.dart';
 import 'Widgets/layout.dart';
 import 'package:gigandjob_web_app/Views/dashboard.dart';
 import 'package:gigandjob_web_app/Widgets/components/dashboards.dart';
@@ -21,7 +22,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          BlocProvider(create: (_) => DashboardBloc()..add(UpdateDashboard()))
+          BlocProvider(create: (_) => DashboardBloc()..add(UpdateDashboard())),
+          BlocProvider(
+              create: (_) => EmployerCubit(repository: EmployerService()))
         ],
         child: MaterialApp(
           routes: {
@@ -29,6 +32,9 @@ class MyApp extends StatelessWidget {
                 DashboardScreen(opcion_nav: "home"),
             "candidate_create": (context) =>
                 DashboardScreen(opcion_nav: "CreateCandidate"),
+            "create_employer_view": (context) => DashboardScreen(
+                  opcion_nav: "CreateEmployer",
+                )
           },
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
