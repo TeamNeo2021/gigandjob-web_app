@@ -1,13 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:';
-import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:gigandjob_web_app/Dominio/Models/candidateListDTO.dart';
 import 'package:meta/meta.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 part 'candidatelist_event.dart';
