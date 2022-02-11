@@ -21,7 +21,8 @@ class _CreateEmployerView extends StatelessWidget {
     final nameController = TextEditingController();
     final descriptionController = TextEditingController();
     final emailController = TextEditingController();
-    final locationController = TextEditingController();
+    final latitudeController = TextEditingController();
+    final longitudeController = TextEditingController();
     final phoneAreaController = TextEditingController();
     final phoneNumberController = TextEditingController();
     final comercialDesignationController = TextEditingController();
@@ -36,8 +37,11 @@ class _CreateEmployerView extends StatelessWidget {
     emailController.addListener(() => bloc.update((employer) {
           employer.mail = emailController.text;
         }));
-    locationController.addListener(() => bloc.update((employer) {
-          employer.location = locationController.text;
+    latitudeController.addListener(() => bloc.update((employer) {
+          employer.latitude = double.parse(latitudeController.text);
+        }));
+    longitudeController.addListener(() => bloc.update((employer) {
+          employer.longitude = double.parse(longitudeController.text);
         }));
     phoneAreaController.addListener(() => bloc.update((employer) {
           employer.phoneArea = phoneAreaController.text;
@@ -202,16 +206,42 @@ class _CreateEmployerView extends StatelessWidget {
                       const SizedBox(
                         height: spacingY,
                       ),
-                      TextFormField(
-                          controller: locationController,
-                          enabled:
-                              state.state != EmployerCubitStateChoice.posting,
-                          validator: (_) => bloc.getError("location"),
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: "Location",
-                            prefixIcon: Icon(Icons.add_location),
-                          )),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: TextFormField(
+                                controller: latitudeController,
+                                enabled: state.state !=
+                                    EmployerCubitStateChoice.posting,
+                                keyboardType: TextInputType.number,
+                                validator: (_) => bloc.getError("latitude"),
+                                decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: "Latitude",
+                                  prefixIcon: Icon(Icons.location_pin),
+                                )),
+                          ),
+                          const SizedBox(
+                            width: spacingX,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: TextFormField(
+                                controller: longitudeController,
+                                enabled: state.state !=
+                                    EmployerCubitStateChoice.posting,
+                                keyboardType: TextInputType.number,
+                                validator: (_) => bloc.getError("longitude"),
+                                decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: "Longitude",
+                                  prefixIcon: Icon(Icons.location_pin),
+                                )),
+                          )
+                        ],
+                      ),
                       const SizedBox(
                         height: spacingY,
                       ),
