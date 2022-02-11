@@ -17,27 +17,17 @@ class DrawerMenu extends StatelessWidget {
                 Navigator.pushNamed(context, "dashboard_screen");
               }),
           DrawListTitle(
-              title: "Administrate CVs",
+              title: "Create cndidate",
               svgSrc: "logo",
               tap: () {
-                Navigator.pushNamed(context, "candidate_create");
+                Navigator.pushNamed(context, "create_candidate_view");
               }),
-          DrawListTitle(
-              title: "Administrate Meetings", svgSrc: "logo", tap: () {}),
-          DrawListTitle(
-              title: "Administrate Candidates", svgSrc: "logo", tap: () {}),
           DrawListTitle(
               title: "Create Employer",
               svgSrc: "logo",
               tap: () {
                 Navigator.pushNamed(context, "create_employer_view");
               }),
-          DrawListTitle(
-              title: "Administrate Employer", svgSrc: "logo", tap: () {}),
-          DrawListTitle(title: "Create Offer", svgSrc: "logo", tap: () {}),
-          DrawListTitle(
-              title: "List Applicants offer", svgSrc: "logo", tap: () {}),
-          DrawListTitle(title: "List Meetings", svgSrc: "logo", tap: () {}),
         ],
       ),
     );

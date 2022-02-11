@@ -35,17 +35,24 @@ class CandidateCubit extends Cubit<CandidateState> {
     if (state.candidate.email.trim().isEmpty) {
       errors["email"] = "The email cannot be empty";
     }
-    if (state.candidate.birthDate.trim().isEmpty) {
+    if (state.candidate.birthDate.trim().isEmpty ||
+        ((DateTime.now().year -
+                DateTime.parse(state.candidate.birthDate).year) <
+            18)) {
       errors["birthDate"] = "The birth date cannot be empty";
     }
     if (state.candidate.password.trim().isEmpty) {
       errors["password"] = "The password date cannot be empty";
     }
-    if (state.candidate.latitude.trim().isEmpty) {
-      errors["latitude"] = "The latitude cannot be empty";
+    if (state.candidate.latitude.trim().isEmpty ||
+        (double.parse(state.candidate.latitude) >= 90 ||
+            double.parse(state.candidate.latitude) <= -90)) {
+      errors["latitude"] = "The latitude cannot be >90 or <-90";
     }
-    if (state.candidate.longitude.trim().isEmpty) {
-      errors["longitude"] = "The longitude cannot be empty";
+    if (state.candidate.longitude.trim().isEmpty ||
+        (double.parse(state.candidate.longitude) >= 90 ||
+            double.parse(state.candidate.longitude) <= -90)) {
+      errors["longitude"] = "The longitude cannot be >90 or <-90";
     }
     if (!_emailRegex.hasMatch(state.candidate.email)) {
       errors["mail"] = "The email given is invalid";

@@ -13,10 +13,10 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     if (opcion_nav == "home") {
       return dashboards(opcion_nav: "home");
-    } else if (opcion_nav == "CreateCandidate") {
-      return dashboards(opcion_nav: "CreateCandidate");
     } else if (opcion_nav == "CreateEmployer") {
       return dashboards(opcion_nav: "CreateEmployer");
+    } else if (opcion_nav == "CreateCandidate") {
+      return dashboards(opcion_nav: "CreateCandidate");
     } else
       return dashboards(opcion_nav: "home");
   }

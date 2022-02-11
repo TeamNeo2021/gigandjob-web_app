@@ -325,12 +325,6 @@ class _CreateCandidateView extends StatelessWidget {
 class CreateCandidateView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var repository = RepositoryProvider.of<CandidateRepository>(context);
-
-    return BlocProvider(
-      create: (ctx) => CandidateCubit(repository: repository),
-      child: GigAndJobLayout(
-          title: "Create an employer", child: _CreateCandidateView()),
-    );
+    return _CreateCandidateView();
   }
 }
