@@ -1,7 +1,8 @@
 class Employer {
   String name;
   String description;
-  String location;
+  double latitude;
+  double longitude;
   String state;
   String rif;
   String phone;
@@ -12,7 +13,8 @@ class Employer {
   Employer(
       {required this.name,
       required this.description,
-      required this.location,
+      required this.latitude,
+      required this.longitude,
       required this.rif,
       required this.phone,
       required this.mail,
@@ -22,7 +24,8 @@ class Employer {
   Employer.empty()
       : name = "",
         description = "",
-        location = "",
+        longitude = 0,
+        latitude = 0,
         rif = "",
         phone = "",
         phoneArea = "",
@@ -34,7 +37,7 @@ class Employer {
     return {
       "name": name,
       "description": description,
-      "location": location,
+      "location": {"latitude": latitude, "longitude": longitude},
       "rif": "J-" + rif,
       "mail": mail,
       "comDesignation": comDesignation,

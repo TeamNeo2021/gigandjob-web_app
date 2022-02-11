@@ -23,8 +23,11 @@ class EmployerCubit extends Cubit<EmployerCubitState> {
     if (state.employer.description.trim().isEmpty) {
       errors["description"] = "The description cannot be empty";
     }
-    if (state.employer.location.trim().isEmpty) {
-      errors["location"] = "The location cannot be empty";
+    if (state.employer.latitude < -90 || state.employer.latitude > 90) {
+      errors["latitude"] = "The latitude must be between [-90, 90]";
+    }
+    if (state.employer.longitude < -90 || state.employer.longitude > 90) {
+      errors["longitude"] = "The longitude must be between [-90, 90]";
     }
     if (state.employer.mail.trim().isEmpty) {
       errors["mail"] = "The email cannot be empty";
