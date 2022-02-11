@@ -11,6 +11,7 @@ class DrawerMenu extends StatelessWidget {
       child: ListView(
         children: [
           DrawListTitle(
+              key: const Key('homeButton'),
               title: "home",
               svgSrc: "logo",
               tap: () {
@@ -27,6 +28,7 @@ class DrawerMenu extends StatelessWidget {
           DrawListTitle(
               title: "Administrate Candidates", svgSrc: "logo", tap: () {}),
           DrawListTitle(
+              key: const Key('createEmployerButton'),
               title: "Create Employer",
               svgSrc: "logo",
               tap: () {
