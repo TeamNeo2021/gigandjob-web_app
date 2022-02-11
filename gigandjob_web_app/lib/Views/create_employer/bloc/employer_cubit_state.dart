@@ -18,21 +18,22 @@ class EmployerCubitState {
       required this.errors,
       this.submitError});
 
-  invalidate(Map<String, String> errors) => EmployerCubitState._(
-      employer: employer,
-      state: EmployerCubitStateChoice.invalid,
-      errors: errors);
+  EmployerCubitState invalidate(Map<String, String> errors) =>
+      EmployerCubitState._(
+          employer: employer,
+          state: EmployerCubitStateChoice.invalid,
+          errors: errors);
 
-  post() => EmployerCubitState._(
+  EmployerCubitState post() => EmployerCubitState._(
       employer: employer, state: EmployerCubitStateChoice.posting, errors: {});
 
-  success() => EmployerCubitState._(
+  EmployerCubitState success() => EmployerCubitState._(
       employer: employer, state: EmployerCubitStateChoice.success, errors: {});
 
-  idle() => EmployerCubitState._(
+  EmployerCubitState idle() => EmployerCubitState._(
       employer: employer, state: EmployerCubitStateChoice.idle, errors: {});
 
-  error(ClientException err) => EmployerCubitState._(
+  EmployerCubitState error(ClientException err) => EmployerCubitState._(
       employer: employer,
       state: EmployerCubitStateChoice.failure,
       errors: errors,

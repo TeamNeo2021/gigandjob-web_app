@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gigandjob_web_app/Dominio/Services/candidateService.dart';
+import 'package:gigandjob_web_app/Views/create_candidate/bloc/candidateBloc.dart';
+import 'package:gigandjob_web_app/Views/create_candidate/create_candidate_view.dart';
+import 'Dominio/Repositories/CandidateRepository.dart';
+import 'Widgets/layout.dart';
 import 'package:gigandjob_web_app/Dominio/Services/employer_service.dart';
 import 'package:gigandjob_web_app/Views/create_employer/create_employer_view.dart';
 import 'Dominio/Repositories/employer_repository.dart';
@@ -24,7 +29,9 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (_) => DashboardBloc()..add(UpdateDashboard())),
           BlocProvider(
-              create: (_) => EmployerCubit(repository: EmployerService()))
+              create: (_) => EmployerCubit(repository: EmployerService())),
+          BlocProvider(
+              create: (_) => CandidateCubit(repository: CandidateService()))
         ],
         child: MaterialApp(
           routes: {
@@ -34,6 +41,9 @@ class MyApp extends StatelessWidget {
                 DashboardScreen(opcion_nav: "CreateCandidate"),
             "create_employer_view": (context) => DashboardScreen(
                   opcion_nav: "CreateEmployer",
+                ),
+            "create_candidate_view": (context) => DashboardScreen(
+                  opcion_nav: "CreateCandidate",
                 )
           },
           debugShowCheckedModeBanner: false,
