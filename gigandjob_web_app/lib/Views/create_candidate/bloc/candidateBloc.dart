@@ -26,8 +26,11 @@ class CandidateCubit extends Cubit<CandidateState> {
     if (state.candidate.phoneCode.trim().isEmpty) {
       errors["phoneCode"] = "The phone code cannot be empty";
     }
-    if (state.candidate.phoneNumber.trim().isEmpty) {
-      errors["phoneNumber"] = "The phone number cannot be empty";
+    if (state.candidate.phoneNumber.trim().isEmpty ||
+        (state.candidate.phoneNumber.length < 7 ||
+            state.candidate.phoneNumber.length > 7)) {
+      errors["phoneNumber"] =
+          "The phone number cannot be empty or  lenght has to be 7 digits";
     }
     if (state.candidate.email.trim().isEmpty) {
       errors["email"] = "The email cannot be empty";

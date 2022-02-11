@@ -37,7 +37,8 @@ class Candidate {
       "phone": {"areaCode": phoneCode, "phoneNumber": phoneNumber},
       "email": email,
       "birthdate": birthDate,
-      "location": {"latitude": latitude, "longitude": longitude}
+      "location": {"latitude": latitude, "longitude": longitude},
+      "password": password
     };
   }
 }

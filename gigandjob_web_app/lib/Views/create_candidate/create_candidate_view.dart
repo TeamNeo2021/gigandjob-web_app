@@ -180,7 +180,7 @@ class _CreateCandidateView extends StatelessWidget {
                           Expanded(
                               flex: 2,
                               child: TextFormField(
-                                  maxLength: 10,
+                                  maxLength: 7,
                                   enabled: state.State !=
                                       CandidateStateChoice.posting,
                                   validator: (_) =>
@@ -232,7 +232,7 @@ class _CreateCandidateView extends StatelessWidget {
                               initialDate: DateTime.now(),
                               firstDate: DateTime(
                                   2000), //DateTime.now() - not to allow to choose before today.
-                              lastDate: DateTime(2101));
+                              lastDate: DateTime.now());
                           if (pickedDate != null) {
                             print(
                                 pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
@@ -267,10 +267,6 @@ class _CreateCandidateView extends StatelessWidget {
                       TextFormField(
                           maxLength: 20,
                           controller: latitudeController,
-                          keyboardType: TextInputType.number,
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly
-                          ],
                           enabled: state.State != CandidateStateChoice.posting,
                           validator: (_) => bloc.getError("latitude"),
                           decoration: const InputDecoration(
