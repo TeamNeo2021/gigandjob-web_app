@@ -11,13 +11,13 @@ class DrawerMenu extends StatelessWidget {
       child: ListView(
         children: [
           DrawListTitle(
-              title: "home",
+              title: "Home",
               svgSrc: "logo",
               tap: () {
                 Navigator.pushNamed(context, "dashboard_screen");
               }),
           DrawListTitle(
-              title: "Create cndidate",
+              title: "Create Candidate",
               svgSrc: "logo",
               tap: () {
                 Navigator.pushNamed(context, "create_candidate_view");
