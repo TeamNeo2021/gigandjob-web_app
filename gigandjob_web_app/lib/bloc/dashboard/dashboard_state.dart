@@ -6,4 +6,9 @@ class DashboardState {
   final int employers;
 
   DashboardState({this.meetings = 0, this.users = 0, this.employers = 0});
+
+  @override
+  String toString() {
+    return 'DashboardState{meetings: $meetings, users: $users, employers: $employers}';
+  }
 }

@@ -5,4 +5,7 @@ abstract class DashboardEvent {}
 
 class UpdateDashboard extends DashboardEvent {
   UpdateDashboard();
+
+  @override
+  String toString() => 'UpdateDashboard';
 }

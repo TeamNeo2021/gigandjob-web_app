@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gigandjob_web_app/Dominio/Services/candidateService.dart';
+import 'package:gigandjob_web_app/Utils/BlocObserver.dart';
 import 'package:gigandjob_web_app/Views/create_candidate/bloc/candidateBloc.dart';
 import 'package:gigandjob_web_app/Views/create_candidate/create_candidate_view.dart';
 import 'Dominio/Repositories/CandidateRepository.dart';
@@ -15,8 +16,11 @@ import 'package:gigandjob_web_app/Widgets/components/dashboards.dart';
 import 'package:gigandjob_web_app/Widgets/dashboard_screen.dart';
 import 'package:gigandjob_web_app/bloc/dashboard/dashboard_bloc.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  await BlocOverrides.runZoned(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    runApp(const MyApp());
+  }, blocObserver: SimpleBlocObserver());
 }
 
 class MyApp extends StatelessWidget {
