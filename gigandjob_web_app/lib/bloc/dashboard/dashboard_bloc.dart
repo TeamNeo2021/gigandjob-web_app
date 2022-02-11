@@ -28,18 +28,12 @@ class dashboardModelDTO {
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   DashboardBloc() : super(DashboardState()) {
     on<DashboardEvent>((event, emit) async {
-      final DateFormat formatter = DateFormat('MM-dd-yyyy');
-      final String formatted = formatter.format(DateTime.now());
+      var api_url = 'https://salvacion-git-job.herokuapp.com';
+      var url = Uri.parse(api_url + '/dashboard');
 
-      var api_url = 'http://localhost:3000';
-      var url = Uri.parse(api_url + '/dashboard/' + formatted);
-      var headers = {
-        "Accept": "application/json",
-        "Access-Control_Allow_Origin": "*"
-      };
       //I think its better using switch
       if (event is UpdateDashboard) {
-        var response = await http.get(url, headers: headers);
+        var response = await http.get(url);
 
         if (response.statusCode == 200) {
           var results = dashboardModelDTO.fromJson(jsonDecode(response.body));
@@ -47,6 +41,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
               meetings: results.meetings,
               employers: results.employers,
               users: results.users));
+        } else {
+          print(response);
         }
       }
     });

@@ -33,11 +33,6 @@ class Dashboard extends StatelessWidget {
               number: state.users);
         },
       )),
-      OutlinedButton(
-          onPressed: () {
-            dashboardBloc.add(UpdateDashboard());
-          },
-          child: const Text('Refresh'))
     ]);
   }
 }
